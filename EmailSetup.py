@@ -77,7 +77,7 @@ def SendEmail(ToEmail_Ticketnum_Name):
     server.ehlo()
 
 
-    server.login(fromaddr, base64.b64decode("c3VwZXJtYW4yOQ=="))
+    server.login(fromaddr, base64.b64decode("="))
     text = msg.as_string()
     server.sendmail(fromaddr, toaddr, text)
     server.set_debuglevel(True)  # show communication with the server
