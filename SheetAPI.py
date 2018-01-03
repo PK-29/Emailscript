@@ -1,6 +1,6 @@
 import pygsheets
 
-gc = pygsheets.authorize(service_file='authentication/email script-ceb8d0fcd170.json',no_cache=True)
+gc = pygsheets.authorize(service_file='authentications/email script-ceb8d0fcd170.json',no_cache=True)
 
 # Open spreadsheet and then workseet
 sh = gc.open('test')
@@ -16,5 +16,5 @@ c1.color = (0,0,1,1)
 c1.update()
 c1.unlink()
 #wks.update_cell('A15', Color= 'blue')
-
+#sa
 #wks.update_cell(str(cell_list[0]), "Hey yak")

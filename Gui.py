@@ -7,6 +7,9 @@ def set_text(text):
     T.insert(1.0,text)
     return
 
+def input_text(input):
+    modify = input.split(",")
+
 def clear_entry(event, entry):
     entry.delete(0, END)
 
@@ -27,14 +30,14 @@ entInstr1 = Entry(window, fg="#273746", insertwidth="5")
 
 T = Text(window, height=2, width=10)
 T.pack(side=TOP, padx=(0,0), pady=(20,0))
-T.insert(END, "Email Verifier")
+T.insert(END, " Email \n Verifier")
 
 
 #instr2 = Label(window, text= "Enter your working hours", font=("Helvetica", 13))
 #entInstr2 = Entry(window, fg="#273746", insertwidth="5")
 
 #allows entry to have a default text
-entInstr1.insert(0, 'facebook,yahoo,youtube,....')
+entInstr1.insert(0, 'example@email.com,Name,20123')
 #entInstr2.insert(0, 'Ex: 2:30-22:40')
 #that gets erased after a mouse click
 entInstr1.bind("<Button-1>", lambda event: clear_entry(event, entInstr1))
@@ -47,13 +50,13 @@ entInstr1.pack(fill=X, padx=50)
 #instr2.pack(pady=(20,3))
 #entInstr2.pack()
 #Buttons
-blockbtn=Button(window, text="Send", fg="#000000", font=("Helvetica",10), command=lambda : [EmailSetup.printye(entInstr1.get()),set_text(EmailSetup.printye(1))])
-blockbtn.config(height=3, width=10)
-blockbtn.pack(side=LEFT, padx=(200,6), pady=0)
+sendbtn=Button(window, text="Send", fg="#000000", font=("Helvetica",10), command=lambda : [set_text(EmailSetup.SendEmail(entInstr1.get()))])
+sendbtn.config(height=3, width=10)
+sendbtn.pack(side=LEFT, padx=(150,6), pady=0)
 
 
-# cancelbt=Button(window, text="Cancel", fg="#000000", font=("Helvetica",10))
-# cancelbt.config(height=3, width=10)
-#cancelbt.pack(side=LEFT )
+updatebt=Button(window, text="Update", fg="#000000", font=("Helvetica",10),command=lambda : [prrint()])
+updatebt.config(height=3, width=10)
+updatebt.pack(side=LEFT )
 
 window.mainloop()

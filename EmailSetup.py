@@ -8,10 +8,23 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 def printye(ye):
-    return "yeyeye"
+    return ye
 
 
-def SendEmail(ToEmail, Ticketnum, Name):
+def SendEmail(ToEmail_Ticketnum_Name):
+
+    n=0
+    for i in ToEmail_Ticketnum_Name:
+        if i == ",":
+            n=n+1
+
+    if n != 2:
+        return "Enter Proper Format"
+    modify = ToEmail_Ticketnum_Name.split(",")
+    ToEmail = modify[0]
+    Ticketnum = modify[1]
+    Name = modify[2]
+
     # check if email syntax is right
     addressToVerify = ToEmail
     match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', addressToVerify)
@@ -73,5 +86,5 @@ def SendEmail(ToEmail, Ticketnum, Name):
 
 if __name__ == "__main__":
 
-     for i in range(20):
-        SendEmail("nguyenbh@mcmaster.ca", "20123", "CapPrice")
+     #for i in range(20):
+        SendEmail("nguyenbh@mcmaster.ca,"+"20123,"+"CapPrice")
