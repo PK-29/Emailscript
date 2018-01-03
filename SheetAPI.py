@@ -22,6 +22,6 @@ c1 = wks.cell('A15')
 c1.color = (1,0,1,1)
 c1.update()
 c1.unlink()
-#wks.update_cell('A15', Color= 'blue')
+##wks.update_cell('A15', Color= 'blue')
 #sa
 #wks.update_cell(str(cell_list[0]), "Hey yak")
