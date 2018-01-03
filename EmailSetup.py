@@ -8,23 +8,10 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 def printye(ye):
-    return ye
+    return "yeyeye"
 
 
-def SendEmail(ToEmail_Ticketnum_Name):
-
-    n=0
-    for i in ToEmail_Ticketnum_Name:
-        if i == ",":
-            n=n+1
-
-    if n != 2:
-        return "Enter Proper Format"
-    modify = ToEmail_Ticketnum_Name.split(",")
-    ToEmail = modify[0]
-    Ticketnum = modify[1]
-    Name = modify[2]
-
+def SendEmail(ToEmail, Ticketnum, Name):
     # check if email syntax is right
     addressToVerify = ToEmail
     match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', addressToVerify)
@@ -60,15 +47,45 @@ def SendEmail(ToEmail_Ticketnum_Name):
         print('Bad')
         return ("Incorrect Email")
 
-    fromaddr = "princekowserr@gmail.com"
+    fromaddr = "lyons.newmedia@gmail.com"
     toaddr = ToEmail
     msg = MIMEMultipart()
-    msg['From'] = email.utils.formataddr(('Test', fromaddr))
+    msg['From'] = email.utils.formataddr(('Lyons Newmedia', fromaddr))
     msg['To'] = toaddr
-    msg['Subject'] = "Email Script"
+    msg['Subject'] = "3D Print Request - Ready for Pickup"
 
-    body = Ticketnum + " Me n My dawg " + Name
+    body = "Hi "+ Name + """ ,
+
+            Good news! The following requested 3D print job has been printed successfully:
+
+            Ticket '#': """ + Ticketnum + """ 
+
+            Please bring this email and your McMaster ID card with you to the Help Desk in Lyons New Media Centre (Mills Library, 4th floor) to retrieve your item.
+
+            You will be required to sign for it, so a proxy cannot come to pick this up for you.
+
+            We will hold this item for no more than 30 days from today's date before it is reclaimed and/or recycled.  If you cannot make it into the Centre due to work/being home etc., please let us know and we can arrange to hold onto it until you can make it in.
+
+            Sincerely,
+
+            Lyons New Media Centre Staff
+            
+            -- 
+            Lyons New Media Centre
+            4th Floor, Mills Library
+            """
+
+ 
+    html = """\
+    <html>
+        <head></head>
+        <body>
+            <p><a href="library.mcmaster.ca/lyons"></a></p>
+        </body>
+    </html>
+"""
     msg.attach(MIMEText(body, 'plain'))
+    msg.attach(MIMEText(html, 'html'))
 
     server = smtplib.SMTP('smtp.gmail.com', 587)
 
@@ -77,7 +94,7 @@ def SendEmail(ToEmail_Ticketnum_Name):
     server.ehlo()
 
 
-    server.login(fromaddr, base64.b64decode("="))
+    server.login(fromaddr, base64.b64decode("c3VwZXJtYW4yOQ=="))
     text = msg.as_string()
     server.sendmail(fromaddr, toaddr, text)
     server.set_debuglevel(True)  # show communication with the server
@@ -86,5 +103,4 @@ def SendEmail(ToEmail_Ticketnum_Name):
 
 if __name__ == "__main__":
 
-     #for i in range(20):
-        SendEmail("nguyenbh@mcmaster.ca,"+"20123,"+"CapPrice")
+     base64.b64encode("Cr34t1v3M1nds")
