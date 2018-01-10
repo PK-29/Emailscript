@@ -1,6 +1,8 @@
 from Tkinter import *
 
 import EmailSetup
+import SheetAPI
+
 
 def set_text(text):
     T.delete(1.0,END)
@@ -50,12 +52,13 @@ entInstr1.pack(fill=X, padx=50)
 #instr2.pack(pady=(20,3))
 #entInstr2.pack()
 #Buttons
-sendbtn=Button(window, text="Send", fg="#000000", font=("Helvetica",10), command=lambda : [set_text(EmailSetup.SendEmail(entInstr1.get()))])
+modify = entInstr1.get().split(",")
+sendbtn=Button(window, text="Send", fg="#000000", font=("Helvetica",10), command=lambda : [set_text(EmailSetup.SendEmail(modify[0],modify[1],modify[2]))])
 sendbtn.config(height=3, width=10)
 sendbtn.pack(side=LEFT, padx=(150,6), pady=0)
 
 
-updatebt=Button(window, text="Update", fg="#000000", font=("Helvetica",10),command=lambda : [prrint()])
+updatebt=Button(window, text="Update", fg="#000000", font=("Helvetica",10),command=lambda : [SheetAPI.Updatess(modify[2])])
 updatebt.config(height=3, width=10)
 updatebt.pack(side=LEFT )
 
