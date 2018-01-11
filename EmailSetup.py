@@ -19,40 +19,40 @@ def SendEmail(ToEmail, Name, Ticketnum):
 
     if match == None:
         print('Bad Syntax')
-        return "Incorrect Email"
+        return "Bad email"
         #raise ValueError('Bad Syntax')
 
-    # # Step 2: Getting MX record
-    # # Pull domain name from email address
-    # domain_name = addressToVerify.split('@')[1]
-    #
-    # # get the MX record for the domain
-    # records = dns.resolver.query(domain_name, 'MX')
-    # mxRecord = records[0].exchange
-    # mxRecord = str(mxRecord)
-    #
-    # # Step 3: ping email server
-    # # check if the email address exists
-    #
-    # # Get local server hostname
-    # host = socket.gethostname()
-    #
-    # # SMTP lib setup (use debug level for full output)
-    # server = smtplib.SMTP()
-    # server.set_debuglevel(0)
-    #
-    # # SMTP Conversation
-    # server.connect(mxRecord)
-    # server.helo(host)
-    # server.mail('me@domain.com')
-    # code, message = server.rcpt(str(addressToVerify))
-    # server.quit()
-    #
-    # # Assume 250 as Success
-    # if code == 250:
-    #     print('Y')
-    # else:
-    #     print('N')
+    # Step 2: Getting MX record
+    # Pull domain name from email address
+    domain_name = addressToVerify.split('@')[1]
+
+    # get the MX record for the domain
+    records = dns.resolver.query(domain_name, 'MX')
+    mxRecord = records[0].exchange
+    mxRecord = str(mxRecord)
+
+    # Step 3: ping email server
+    # check if the email address exists
+
+    # Get local server hostname
+    host = socket.gethostname()
+
+    # SMTP lib setup (use debug level for full output)
+    server = smtplib.SMTP()
+    server.set_debuglevel(0)
+
+    # SMTP Conversation
+    server.connect(mxRecord)
+    server.helo(host)
+    server.mail('me@domain.com')
+    code, message = server.rcpt(str(addressToVerify))
+    server.quit()
+
+    # Assume 250 as Success
+    if code == 250:
+        print('Y')
+    else:
+        print('N')
 
     fromaddr = "lyons.newmedia@gmail.com"
     toaddr = ToEmail

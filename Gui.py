@@ -2,7 +2,7 @@ from Tkinter import *
 
 import EmailSetup
 import SheetAPI
-
+from ck_Freeze import setup, Executable
 
 def set_text(text):
     T.delete(1.0,END)
@@ -20,9 +20,9 @@ window = Tk()
 window.title("3DRFP_EMAIL_LYONS")
 window.geometry("500x300")
 window.wm_iconbitmap('')
-# background_image=PhotoImage(file="dj.gif")
-# background_label =Label(window, image=background_image)
-#background_label.place(x=0, y=0, relwidth=1, relheight=1)
+background_image=PhotoImage(file="lnmcheader.gif")
+background_label =Label(window, image=background_image)
+background_label.place(x=1, y=130, relwidth=1, relheight=1)
 
 
 #setting up titles and labels
