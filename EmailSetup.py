@@ -91,7 +91,7 @@ def SendEmail(ToEmail, Name, Ticketnum):
     server.ehlo()
 
 
-    server.login(fromaddr, base64.b64decode("Q3IzNHQxdjNNMW5kcw=="))
+    server.login(fromaddr, base64.b64decode("**************"))
     text = msg.as_string()
     server.sendmail(fromaddr, toaddr, text)
     server.set_debuglevel(True)  # show communication with the server
@@ -100,6 +100,6 @@ def SendEmail(ToEmail, Name, Ticketnum):
 
 if __name__ == "__main__":
 
-    print SendEmail("princekowser@hotmail.com","Uday","21714")
+    
     #body = "Hi " + color.BOLD + "PRice" + " ,Good news! The following requested 3D print job has been printed successfully:\n\n" + "Ticket '#': " + "AS" + "\n\nPlease bring this email and your McMaster ID card with you to the Help Desk in Lyons New Media Centre (Mills Library, 4th floor) to retrieve your item.\n\nYou will be required to sign for it, so a proxy cannot come to pick this up for you.\n\nWe will hold this item for no more than 30 days from today's date before it is reclaimed and/or recycled.  If you cannot make it into the Centre due to work/being home etc., please let us know and we can arrange to hold onto it until you can make it in.\n\nSincerely,\n\nLyons New Media Centre Staff\n\n--\nLyons New Media Centre\n4th Floor, Mills Library"
     #print body
