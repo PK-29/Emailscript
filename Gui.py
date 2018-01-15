@@ -2,7 +2,7 @@ from Tkinter import *
 
 import EmailSetup
 import SheetAPI
-from ck_Freeze import setup, Executable
+
 
 def set_text(text):
     T.delete(1.0,END)
@@ -30,7 +30,7 @@ Title = Label(window, text="SendEMail", fg="#383a40", font=("Helvetica",18))
 instr1 = Label(window, text= "Enter The Email, Name, and Ticket number", font=("Helvetica", 13))
 entInstr1 = Entry(window, fg="#273746", insertwidth="5")
 
-T = Text(window, height=2, width=10)
+T = Text(window, height=2, width=20)
 T.pack(side=TOP, padx=(0,0), pady=(20,0))
 T.insert(END, " Email \n Verifier")
 
@@ -52,13 +52,12 @@ entInstr1.pack(fill=X, padx=50)
 #instr2.pack(pady=(20,3))
 #entInstr2.pack()
 #Buttons
-modify = entInstr1.get().split(",")
-sendbtn=Button(window, text="Send", fg="#000000", font=("Helvetica",10), command=lambda : [set_text(EmailSetup.SendEmail(modify[0],modify[1],modify[2]))])
+sendbtn=Button(window, text="Send", fg="#000000", font=("Helvetica",10), command=lambda : [set_text(EmailSetup.SendEmail(entInstr1.get().split(",")[0],entInstr1.get().split(",")[1],entInstr1.get().split(",")[2]))])
 sendbtn.config(height=3, width=10)
 sendbtn.pack(side=LEFT, padx=(150,6), pady=0)
 
+updatebt=Button(window, text="Update", fg="#000000", font=("Helvetica",10), command=lambda : set_text(SheetAPI.Updatess(str(entInstr1.get().split(",")[2]))))
 
-updatebt=Button(window, text="Update", fg="#000000", font=("Helvetica",10),command=lambda : [SheetAPI.Updatess(modify[2])])
 updatebt.config(height=3, width=10)
 updatebt.pack(side=LEFT )
 
